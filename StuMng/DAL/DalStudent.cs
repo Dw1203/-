@@ -72,5 +72,7 @@ namespace StuMng.DAL
                 throw new Exception(ex.Message);
             }
         }
+
+        
     }
 }

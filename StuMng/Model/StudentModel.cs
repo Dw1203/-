@@ -12,7 +12,32 @@ namespace StuMng.Model
         public string StuNum { get; set; }
         public string Gender { get; set; }
         public string Enrollment { get; set; }
-        public string ZhuanYe { get; set; }
+
+        private string zhuanye;
+        public string ZhuanYe
+        {
+            get
+            {
+                switch(zhuanye)
+                {
+                    case "001":
+                        return  "计算机工程";
+                    case "002":
+                        return "学前教育";
+                    case "003":
+                        return "能机工程";                     
+                    default:
+                        return "计算机工程";
+                      
+                }
+            }
+            set
+            {
+                zhuanye = value;
+            }
+        } 
+
+          
         public int Age { get; set; }
 
 

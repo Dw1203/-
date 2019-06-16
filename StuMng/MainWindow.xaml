@@ -34,7 +34,7 @@
                         <dragablz:InterTabController />
                     </dragablz:TabablzControl.InterTabController>
                     <TabItem Header="主页">
-                        <usercontrol:AddCJ></usercontrol:AddCJ>           
+                           
                     </TabItem>
                     <TabItem Header="关于">
                         

@@ -53,8 +53,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Prism.Mvvm">
-      <HintPath>..\..\I2PlusTest\I2PlusTest\bin\Debug\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism.Mvvm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.SharedInterfaces">
       <HintPath>..\..\I2PlusTest\I2PlusTest\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
@@ -87,29 +88,16 @@
     <Compile Include="Common\WindowManager.cs" />
     <Compile Include="DAL\DalLogin.cs" />
     <Compile Include="DAL\DalMain.cs" />
+    <Compile Include="DAL\DalProfessional.cs" />
     <Compile Include="DAL\DalStudent.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\MenuModel.cs" />
+    <Compile Include="Model\ProfessionalModel.cs" />
     <Compile Include="Model\StudentModel.cs" />
     <Compile Include="PasswordBoxHelper\PasswordHelper.cs" />
     <Compile Include="SQLHelp.cs" />
-    <Compile Include="UserControls\AddCJ.xaml.cs">
-      <DependentUpon>AddCJ.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\DeleteCJ.xaml.cs">
-      <DependentUpon>DeleteCJ.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SearByStuNum.xaml.cs">
-      <DependentUpon>SearByStuNum.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\SercByCou.xaml.cs">
-      <DependentUpon>SercByCou.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\StuMng.xaml.cs">
       <DependentUpon>StuMng.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UpDateCJ.xaml.cs">
-      <DependentUpon>UpDateCJ.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CreateStuViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -136,27 +124,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\AddCJ.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\DeleteCJ.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\SearByStuNum.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\SercByCou.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\StuMng.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\UpDateCJ.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

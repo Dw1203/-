@@ -41,12 +41,15 @@
             <TextBlock Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="White">年龄:</TextBlock>
             <TextBlock Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="White">专业:</TextBlock>
             <TextBlock Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Foreground="White">入校时间:</TextBlock>
-            <TextBox Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0"  VerticalAlignment="Center"></TextBox>
-            <TextBox Text="{Binding Path=StuNum}" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Center"></TextBox>
-            <TextBox Text="{Binding Path=Gender}" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center"></TextBox>
-            <TextBox Text="{Binding Path=Age}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"></TextBox>
-            <TextBox Text="{Binding Path=Zhuanye}" Grid.Column="1" Grid.Row="4"  VerticalAlignment="Center"></TextBox>
-            <TextBox Text="{Binding Path=Enrollment}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"></TextBox>
+            <TextBox Foreground="White" Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0"  VerticalAlignment="Center"></TextBox>
+            <TextBox Foreground="White" Text="{Binding Path=StuNum}" Grid.Column="1" Grid.Row="1"  VerticalAlignment="Center"></TextBox>
+            <ComboBox Foreground="White"  SelectedIndex="{Binding Path=GenSelectIndex}" Grid.Column="1" Grid.Row="2"  VerticalAlignment="Center">
+                <ComboBoxItem>男</ComboBoxItem>
+                <ComboBoxItem>女</ComboBoxItem>
+            </ComboBox>
+            <TextBox Foreground="White" Text="{Binding Path=Age}" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center"></TextBox>
+            <ComboBox SelectedIndex="{Binding Path=ProSelectIndex}" SelectedItem="{Binding Path=Zhuanye}" Foreground="White" DisplayMemberPath="Title" ItemsSource="{Binding Path=ProfessionalModels}" Grid.Column="1" Grid.Row="4"  VerticalAlignment="Center"></ComboBox>
+            <TextBox Foreground="White" Text="{Binding Path=Enrollment}" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center"></TextBox>
             <Button Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Center" Command="{Binding Path=CreateCmd}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}}">保存</Button>
         </Grid>
     </Grid>

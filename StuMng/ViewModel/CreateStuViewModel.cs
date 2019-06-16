@@ -13,12 +13,17 @@ using StuMng.Common;
 
 namespace StuMng.ViewModel
 {
+
+    
     public class CreateStuViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public  DelegateCommand<Window> CreateCmd{ get; set; }
         private StudentViewModel student { get; set;}
         DalStudent dal = new DalStudent();
+        DalProfessional dalp = new DalProfessional();
+
+
         private string name;                                             
         public string Name
         {
@@ -44,7 +49,10 @@ namespace StuMng.ViewModel
             get { return gender; }
             set
             {
-                gender = value;
+                if(GenSelectIndex==0)
+                gender = "男";
+                else
+                    gender = "女";
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Gender"));
             }
         }
@@ -82,12 +90,46 @@ namespace StuMng.ViewModel
             }
         }
 
+
+        private int proSelectIndex=0;
+
+        public int ProSelectIndex
+        {
+            get { return proSelectIndex; }
+            set { proSelectIndex = value; }
+        }
+
+        private int genSelectIndex=0;
+
+        public int GenSelectIndex
+        {
+            get { return genSelectIndex=0; }
+            set { genSelectIndex = value; }
+        }
+
+
+        private List<ProfessionalModel> professionalModels;
+
+        public List<ProfessionalModel> ProfessionalModels
+        {
+            get { return professionalModels; }
+            set { professionalModels = value; }
+        }
+
+
         public CreateStuViewModel()
         {
             CreateCmd = new DelegateCommand<Window>(create);
             student = new StudentViewModel();
+            LoadList();
         }
 
+        private void LoadList()
+        {
+            List<ProfessionalModel> list = new List<ProfessionalModel>();
+            list=  dalp.GetProfessionals();
+            ProfessionalModels = list;
+        }
         private void create(Window win)
         {
             

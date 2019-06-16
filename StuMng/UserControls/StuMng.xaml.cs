@@ -27,5 +27,7 @@ namespace StuMng.UserControls
             InitializeComponent();
             WindowManager.Register<CreatStu>("CreatStu");
         }
+
+     
     }
 }

@@ -19,6 +19,8 @@ namespace StuMng.ViewModel
        
         public DelegateCommand CreateCmd { get; set; }
         public DelegateCommand SaveCreate { get; set; }
+
+        public DelegateCommand RefreshCmd { get; set; }
         DAL.DalStudent dalStudent = new DAL.DalStudent();
         //List<StudentModel> studentModels = new List<StudentModel>();
         public List<StudentModel> liststudents;
@@ -37,6 +39,7 @@ namespace StuMng.ViewModel
             LoadStudent();
             CreateCmd = new DelegateCommand(OpenCreate);
             SaveCreate = new DelegateCommand(saveCreate);
+            RefreshCmd = new DelegateCommand(Refresh);
             
         }
         /// <summary>
@@ -74,9 +77,8 @@ namespace StuMng.ViewModel
         /// <summary>
         /// 打开创建页
         /// </summary>
-        private void OpenCreate()
-        {
-            LoadStudent();
+        private void OpenCreate()        {
+          
             WindowManager.Show("CreatStu", null);            
         }
 
@@ -86,7 +88,10 @@ namespace StuMng.ViewModel
 
         }
 
-
+        private void Refresh()
+        {
+            LoadStudent();
+        }
         
     }
 }
