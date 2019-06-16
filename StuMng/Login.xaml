@@ -1,0 +1,37 @@
+﻿<Window x:Class="StuMng.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StuMng"
+		xmlns:pwd="clr-namespace:StuMng.PasswordBoxHelper"
+		 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+		xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+		xmlns:Vm="clr-namespace:StuMng.ViewModel"
+		Name="logWin"
+        Title="Login" Height="180" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"  Background="#4B76A5"
+	   >
+	<Grid >
+		<Grid.DataContext>
+			<Vm:LoginViewModel/>
+		</Grid.DataContext>
+		<MaterialDesign:PackIcon Kind="Person" Margin="57,43,0,0" Height="20" Width="20" Foreground="Violet"></MaterialDesign:PackIcon>
+		<TextBox Name="tbxusername"  MaterialDesign:HintAssist.Hint="请输入用户名" Text="{Binding Path=VmUsername}"     Padding="1" VerticalContentAlignment="Bottom"   HorizontalAlignment="Left" Height="30" Margin="93,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Focusable="True"/>
+		<MaterialDesign:PackIcon Kind="Lock" Margin="56,85,0,0" Height="20" Width="20" Foreground="Violet"/>
+		<PasswordBox MaterialDesign:HintAssist.Hint="请输入密码" x:Name="ptxt" pwd:PasswordHelper.Password="{Binding Path=VmPassWord,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Height="30"  Margin="93,76,0,0"  VerticalAlignment="Top" Width="144" Focusable="True">
+			<i:Interaction.Behaviors>
+				<pwd:PasswordBoxBehavior />
+			</i:Interaction.Behaviors>
+		</PasswordBox>
+		<Button Command="{Binding Path=LoginCmd}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Window}}}"  Content="登录" Padding="1" HorizontalAlignment="Left" Margin="107,143,0,0" VerticalAlignment="Top" Width="94" Height="27" Style="{StaticResource MaterialDesignRaisedLightButton}" Foreground="Black"/>
+		<RadioButton IsChecked="{Binding Path=VmType}" Content="普通登录" HorizontalAlignment="Left" Height="24" Margin="76,108,0,0" VerticalAlignment="Top" Width="72"/>
+		<RadioButton Content="管理员" HorizontalAlignment="Left" Height="24" Margin="170,111,0,0" VerticalAlignment="Top" Width="67"/>
+		<Button Command="{Binding Path=CloseWinCmd}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, 
+                         AncestorType={x:Type Window}}}"  Background="{x:Null}" BorderBrush="{x:Null}" Padding="1" HorizontalAlignment="Left" Margin="275,0,0,0" VerticalAlignment="Top" >
+			<MaterialDesign:PackIcon Kind="Close" ></MaterialDesign:PackIcon>
+		</Button>
+
+
+	</Grid>
+</Window>

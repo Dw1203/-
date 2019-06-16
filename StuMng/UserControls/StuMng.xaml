@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="StuMng.UserControls.StuMng"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StuMng.UserControls"
+             mc:Ignorable="d" 
+             xmlns:viewmodel ="clr-namespace:StuMng.ViewModel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="529" d:DesignWidth="1000">
+    <Grid>
+        <Grid.DataContext>
+            <viewmodel:StudentViewModel></viewmodel:StudentViewModel>
+        </Grid.DataContext>
+        <StackPanel VerticalAlignment="Top" Orientation="Horizontal" Margin="0 5 0 0" Grid.ColumnSpan="2">
+            <Label VerticalAlignment="Center">请输入姓名：</Label>
+            <TextBox Width="200"  Style="{StaticResource MaterialDesignTextBox}" materialDesign:HintAssist.Hint="姓名"></TextBox>
+            <Button Height="30" Padding="0" Foreground="DarkGray" BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="Search" Height="30" Width="30"></materialDesign:PackIcon>
+            </Button>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding  Path=Liststudents}" Height="450" Margin="0 35 0 0" VerticalAlignment="Top" Grid.ColumnSpan="2"
+                  SelectedItem="{Binding Path=StudentModel}">
+           
+        </DataGrid>
+        <StackPanel  VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+            <Button Command="{Binding Path=CreateCmd}" Content="新增" Width="100" VerticalAlignment="Bottom" Margin="3"></Button>
+            <Button Content="修改" Width="100" VerticalAlignment="Bottom" Margin="3"></Button>
+            <Button Content="删除" Width="100" VerticalAlignment="Bottom" Margin="3"></Button>
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>
