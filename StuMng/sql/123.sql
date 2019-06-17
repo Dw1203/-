@@ -1,0 +1,27 @@
+USE [StuMag]
+GO
+
+/****** Object:  Table [dbo].[Professional]    Script Date: 2019/6/18 6:08:35 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Professional](
+	[Num] [varchar](50) NOT NULL,
+	[Title] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Professional] PRIMARY KEY CLUSTERED 
+(
+	[Num] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
