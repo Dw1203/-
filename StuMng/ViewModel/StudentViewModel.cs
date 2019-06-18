@@ -11,6 +11,7 @@ using StuMng.View;
 using StuMng.Common;
 using StuMng.ViewModel;
 
+
 namespace StuMng.ViewModel
 {
     public class StudentViewModel : INotifyPropertyChanged
@@ -20,8 +21,21 @@ namespace StuMng.ViewModel
         public DelegateCommand CreateCmd { get; set; }
         public DelegateCommand SaveCreate { get; set; }
 
+        public DelegateCommand SearchCmd { get; set; }
+
+        public DelegateCommand UpdateCmd { get; set; }
+
+        private List<StudentModel> students;
+        private string searchkey;
+
+        public string Searchkey
+        {
+            get { return searchkey; }
+            set { searchkey = value; }
+        }
+
         public DelegateCommand RefreshCmd { get; set; }
-        DAL.DalStudent dalStudent = new DAL.DalStudent();
+        DAL.DalStudent dalStudent = new DAL.DalStudent();   
         //List<StudentModel> studentModels = new List<StudentModel>();
         public List<StudentModel> liststudents;
         public List<StudentModel> Liststudents
@@ -29,7 +43,7 @@ namespace StuMng.ViewModel
             set { liststudents = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Liststudents")); }
         }
-        public DataTable tableStu { get; set; }
+       
         /// <summary>
         /// 初始化构造函数
         /// </summary>       
@@ -37,10 +51,10 @@ namespace StuMng.ViewModel
         public StudentViewModel()
         {
             LoadStudent();
-            CreateCmd = new DelegateCommand(OpenCreate);
-            SaveCreate = new DelegateCommand(saveCreate);
+            CreateCmd = new DelegateCommand(OpenCreate);          
             RefreshCmd = new DelegateCommand(Refresh);
-            
+            SearchCmd = new DelegateCommand(Search);
+            UpdateCmd = new DelegateCommand(OpenUpdate);
         }
         /// <summary>
         /// 学生对象
@@ -63,13 +77,14 @@ namespace StuMng.ViewModel
         {
             List<StudentModel> list=new List<StudentModel>();
             DataTable dt = dalStudent.GetStuData();
-            dt.Columns["Name"].ColumnName = "姓名";
+           
             foreach (DataRow item in dt.Rows)
             {
-                studentModel = new StudentModel(item["姓名"].ToString(), item["StuNum"].ToString(), bool.Parse(item["Gender"].ToString()) ? "男" : "女",
-                    int.Parse(item["Age"].ToString()), item["Enrollment"].ToString(), item["ZhuanYe"].ToString());
+                studentModel = new StudentModel(item["Num"].ToString(),item["姓名"].ToString(), item["学号"].ToString(), bool.Parse(item["性别"].ToString()) ? "男" : "女",
+                    int.Parse(item["年龄"].ToString()), item["入校时间"].ToString(), item["专业"].ToString());
                 list.Add(studentModel);
             }
+            students = list;
             Liststudents = null;
             Liststudents = list;
         }
@@ -82,16 +97,23 @@ namespace StuMng.ViewModel
             WindowManager.Show("CreatStu", null);            
         }
 
-        private void saveCreate()
+        private void OpenUpdate()
         {
-            string s = studentModel.Name;
-
+            WindowManager.Show("Update", null);
         }
+
+        private void Search()
+        {
+            List<StudentModel> list =students.Where(s => s.Name.Contains(Searchkey)).ToList();
+            Liststudents = null;
+            Liststudents = list;
+        }           
 
         private void Refresh()
         {
             LoadStudent();
         }
         
+     
     }
 }

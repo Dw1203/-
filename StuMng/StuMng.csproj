@@ -102,8 +102,12 @@
     <Compile Include="ViewModel\CreateStuViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\StudentViewModel.cs" />
+    <Compile Include="ViewModel\UpdateStuViewModel.cs" />
     <Compile Include="View\CreatStu.xaml.cs">
       <DependentUpon>CreatStu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Update.xaml.cs">
+      <DependentUpon>Update.xaml</DependentUpon>
     </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
@@ -129,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CreatStu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Update.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -8,34 +8,15 @@ namespace StuMng.Model
 {
     public  class StudentModel
     {
+        public string Num { get; set; }
         public string Name { get; set; }
         public string StuNum { get; set; }
         public string Gender { get; set; }
         public string Enrollment { get; set; }
 
-        private string zhuanye;
-        public string ZhuanYe
-        {
-            get
-            {
-                switch(zhuanye)
-                {
-                    case "001":
-                        return  "计算机工程";
-                    case "002":
-                        return "学前教育";
-                    case "003":
-                        return "能机工程";                     
-                    default:
-                        return "计算机工程";
-                      
-                }
-            }
-            set
-            {
-                zhuanye = value;
-            }
-        } 
+        public string ZhuanYe { get; set; }
+
+
 
           
         public int Age { get; set; }
@@ -44,13 +25,14 @@ namespace StuMng.Model
         public StudentModel()
         { }
 
-        public StudentModel(string name,string stuNum,string gender,int age,string enrollment,string zhuanYe)
+        public StudentModel(string num,string name,string stuNum,string gender,int age,string enrollment,string zhuan)
         {
+            Num = num;
             Name = name;
             StuNum = stuNum;
             Gender = gender;
             Enrollment = enrollment;
-            ZhuanYe = zhuanYe;
+            ZhuanYe = zhuan;
             Age = age;
         }
     }

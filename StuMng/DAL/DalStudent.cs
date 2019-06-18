@@ -19,7 +19,7 @@ namespace StuMng.DAL
         /// <returns></returns>
         public DataTable GetStuData()
         {
-            string sqlstr = "select * from Student";
+            string sqlstr = "select a.Num ,a.Name as 姓名,a.StuNum as 学号,a.Gender as 性别,a.Age as 年龄,a.Enrollment as 入校时间,b.Title as 专业 from Student as a ,Professional as b  where a.ZhuanYe= b.Num";
             try
             {
                 DataTable dt = SQLHelp.GetDataTable(sqlstr, null);

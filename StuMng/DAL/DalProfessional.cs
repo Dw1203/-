@@ -24,5 +24,6 @@ namespace StuMng.DAL
             return list;
         }
 
+      
     }
 }

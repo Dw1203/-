@@ -14,18 +14,26 @@
         </Grid.DataContext>
         <StackPanel VerticalAlignment="Top" Orientation="Horizontal" Margin="0 5 0 0" Grid.ColumnSpan="2">
             <Label VerticalAlignment="Center">请输入姓名：</Label>
-            <TextBox Width="200"  Style="{StaticResource MaterialDesignTextBox}" materialDesign:HintAssist.Hint="姓名"></TextBox>
-            <Button Height="30" Padding="0" Foreground="DarkGray" BorderBrush="{x:Null}">
+            <TextBox Text="{Binding Path=Searchkey}" Width="200" Foreground="White"  Style="{StaticResource MaterialDesignTextBox}" materialDesign:HintAssist.Hint="姓名"></TextBox>
+            <Button Command="{Binding Path=SearchCmd}" Height="30" Padding="0" Foreground="DarkGray" BorderBrush="{x:Null}">
                 <materialDesign:PackIcon Kind="Search" Height="30" Width="30"></materialDesign:PackIcon>
             </Button>
         </StackPanel>
-        <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding  Path=Liststudents}" Height="450" Margin="0 35 0 0" VerticalAlignment="Top" Grid.ColumnSpan="2"
+        <DataGrid  AutoGenerateColumns="False" ItemsSource="{Binding  Path=Liststudents}" Height="450" Margin="0 35 0 0" VerticalAlignment="Top" Grid.ColumnSpan="2"
                   SelectedItem="{Binding Path=StudentModel}">
-           
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="姓名" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="学号" Binding="{Binding Path=StuNum}"></DataGridTextColumn>
+                <DataGridTextColumn Header="性别" Binding="{Binding Path=Gender}"></DataGridTextColumn>
+                <DataGridTextColumn Header="年龄" Binding="{Binding Path=Age}"></DataGridTextColumn>
+                <DataGridTextColumn Header="专业" Binding="{Binding Path=ZhuanYe}"></DataGridTextColumn>
+                <DataGridTextColumn Header="入校时间" Binding="{Binding Path=Enrollment}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
         </DataGrid>
         <StackPanel  VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
             <Button Command="{Binding Path=CreateCmd}" Content="新增" Width="100" VerticalAlignment="Bottom" Margin="3"></Button>
-            <Button Content="修改" Width="100" VerticalAlignment="Bottom" Margin="3"></Button>
+            <Button Command="{Binding Path=UpdateCmd}" Content="修改" Width="100" VerticalAlignment="Bottom" Margin="3"></Button>
             <Button Content="删除" Width="100" VerticalAlignment="Bottom" Margin="3"></Button>
             <Button Command="{Binding Path=RefreshCmd}" Content="刷新" Width="100" VerticalAlignment="Bottom" Margin="3" ></Button>
 

@@ -71,7 +71,8 @@ namespace StuMng.ViewModel
         private string zhuanye;                                          
         public string Zhuanye
         {
-            get { return zhuanye; }
+            get { return zhuanye; }              
+
             set
             {
                 zhuanye = value;
@@ -132,8 +133,8 @@ namespace StuMng.ViewModel
         }
         private void create(Window win)
         {
-            
-            StudentModel studentModel = new StudentModel(Name, StuNum, Gender,int.Parse(Age), Enrollment, Zhuanye);
+            Convert();
+            StudentModel studentModel = new StudentModel("",Name, StuNum, Gender,int.Parse(Age), Enrollment, Zhuanye);
             try
             {
                 
@@ -149,6 +150,38 @@ namespace StuMng.ViewModel
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Convert()
+        {
+            switch (GenSelectIndex)
+            {
+                case 0:
+                    Gender = "男";
+                    break;
+                case 1:
+                    Gender = "女";
+                    break;
+                default:
+                    Gender = "男";
+                    break;
+            }
+            switch (ProSelectIndex)
+            {
+
+                case 0:
+                    Zhuanye= "001";
+                    break;
+                case 1:
+                    Zhuanye = "002";
+                    break;
+               case 2:
+                    Zhuanye = "003";
+                    break;
+                default:
+                    Zhuanye = "001";
+                    break;
             }
         }
     }
